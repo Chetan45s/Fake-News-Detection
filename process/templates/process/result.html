@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load define_tag %}
 <html lang="en">
 
 <head>
@@ -87,13 +88,11 @@
 
           <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
             <div class="box recommended" data-aos="zoom-in" data-aos-delay="100">
-            {% if result == 1 %}
-              <h1>Fake News</h1>
-            {% endif %}
-            {% if result == 0 %}
-              <h1>Real News</h1>
-            {% endif %}
-            {{result}}
+              {% if result|define_ran == 1 %}
+                <h1>Fake News</h1>
+              {% else %}
+                <h1>Real News</h1>
+              {% endif %}
               <h4><sup></sup>{{accuracy}}<span>% / Accuracy</span></h4>
               <div class="btn-wrap">
                 <a href="{% url 'home' %}" class="btn-buy">Check Another News</a>
